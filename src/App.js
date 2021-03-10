@@ -12,6 +12,10 @@ import BasicTable from "./components/Table";
 function App() {
   const [tableData, setTableData] = useState([]);
 
+  const addDataToTable = data => {
+    setTableData([data, ...tableData]);
+  };
+
   useEffect(() => {
     const apiCall = async () => {
       const { data } = await axios.get(
@@ -25,7 +29,7 @@ function App() {
 
   return (
     <Container maxWidth='md'>
-      <Form />
+      <Form addDataToTable={addDataToTable} />
       <BasicTable tableData={tableData} />
     </Container>
   );

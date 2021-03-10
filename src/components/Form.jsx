@@ -17,14 +17,16 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function Form() {
+export default function Form({ addDataToTable }) {
   const classes = useStyles();
 
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     website: '',
-    company: ''
+    company: {
+      name: ''
+    }
   })
 
   const handleChange = e => {
@@ -32,12 +34,21 @@ export default function Form() {
       ...formData,
       [e.target.name]: e.target.value
     })
-    console.log(formData)
   }
 
   const handleSubmit = e => {
     e.preventDefault()
     console.log(formData)
+    addDataToTable(formData)
+    setFormData({
+      name: '',
+      email: '',
+      website: '',
+      company: {
+        name: ''
+      }
+    })
+
   }
 
   return (
@@ -46,7 +57,7 @@ export default function Form() {
         <TextField label="Name: " variant="filled" type="text" className={classes.input} name="name" value={formData.name} onChange={handleChange} />
         <TextField label="Email: " variant="filled" type="email" name="email" value={formData.email} onChange={handleChange} />
         <TextField label="Website: " variant="filled" type="text" name="website" value={formData.website} onChange={handleChange} />
-        <TextField label="Company: " variant="filled" type="text" name="company" value={formData.company} onChange={handleChange} />
+        <TextField label="Company: " variant="filled" type="text" name="company" value={formData.company.name} onChange={handleChange} />
       </Grid>
       <Grid container justify={'center'} item xs={12}>
         <Button fullWidth className={classes.button} size="large" variant="contained" color="primary" onClick={handleSubmit}>
