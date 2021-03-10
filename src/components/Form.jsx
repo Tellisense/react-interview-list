@@ -41,7 +41,6 @@ export default function Form() {
   }
 
   return (
-    // <form className={classes.root} noValidate autoComplete="off">
     <Grid container spacing={3} className={classes.formContainer}>
       <Grid container justify="space-around" item xs={12}>
         <TextField label="Name: " variant="filled" type="text" className={classes.input} name="name" value={formData.name} onChange={handleChange} />
@@ -55,6 +54,5 @@ export default function Form() {
         </Button>
       </Grid>
     </Grid>
-    // </form>
   );
 }
