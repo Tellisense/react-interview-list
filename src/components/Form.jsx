@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Button, TextField } from '@material-ui/core';
+import { v4 as uuidv4 } from 'uuid';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,16 +31,29 @@ export default function Form({ addDataToTable }) {
   })
 
   const handleChange = e => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    })
+    if (e.target.name === 'company') {
+      setFormData({
+        ...formData,
+        company: {
+          name: e.target.value
+        }
+      })
+    } else {
+      setFormData({
+        ...formData,
+        [e.target.name]: e.target.value
+      })
+    }
   }
 
   const handleSubmit = e => {
     e.preventDefault()
-    console.log(formData)
-    addDataToTable(formData)
+    const payload = {
+      id: uuidv4(),
+      ...formData
+    }
+    console.log(payload)
+    addDataToTable(payload)
     setFormData({
       name: '',
       email: '',
@@ -54,10 +68,10 @@ export default function Form({ addDataToTable }) {
   return (
     <Grid container spacing={3} className={classes.formContainer}>
       <Grid container justify="space-around" item xs={12}>
-        <TextField label="Name: " variant="filled" type="text" className={classes.input} name="name" value={formData.name} onChange={handleChange} />
-        <TextField label="Email: " variant="filled" type="email" name="email" value={formData.email} onChange={handleChange} />
-        <TextField label="Website: " variant="filled" type="text" name="website" value={formData.website} onChange={handleChange} />
-        <TextField label="Company: " variant="filled" type="text" name="company" value={formData.company.name} onChange={handleChange} />
+        <TextField label="Name: " variant="filled" type="text" className={classes.input} name="name" value={formData?.name} onChange={handleChange} />
+        <TextField label="Email: " variant="filled" type="email" name="email" value={formData?.email} onChange={handleChange} />
+        <TextField label="Website: " variant="filled" type="text" name="website" value={formData?.website} onChange={handleChange} />
+        <TextField label="Company: " variant="filled" type="text" name="company" value={formData?.company?.name} onChange={handleChange} />
       </Grid>
       <Grid container justify={'center'} item xs={12}>
         <Button fullWidth className={classes.button} size="large" variant="contained" color="primary" onClick={handleSubmit}>
