@@ -1,3 +1,5 @@
+import { Container } from "@material-ui/core";
+
 import React, { useEffect, useState } from "react";
 
 import axios from "axios";
@@ -22,10 +24,10 @@ function App() {
   }, []);
 
   return (
-    <>
+    <Container maxWidth='md'>
       <Form />
       <BasicTable tableData={tableData} />
-    </>
+    </Container>
   );
 }
 
