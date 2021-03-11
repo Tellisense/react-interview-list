@@ -7,6 +7,7 @@ import axios from "axios";
 import "./App.css";
 
 import Form from "./components/Form";
+import Parent from "./components/Parent";
 import BasicTable from "./components/Table";
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
   }, []);
 
   return (
+    // <Parent />
     <Container maxWidth='md'>
       <Form addDataToTable={addDataToTable} />
       <BasicTable tableData={tableData} />
