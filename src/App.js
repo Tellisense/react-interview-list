@@ -13,15 +13,9 @@ import BasicTable from "./components/Table";
 function App() {
   const [tableData, setTableData] = useState([]);
 
-  const addDataToTable = data => {
-    setTableData([data, ...tableData]);
-  };
-
   useEffect(() => {
     const apiCall = async () => {
-      const { data } = await axios.get(
-        `https://jsonplaceholder.typicode.com/users`
-      );
+      const { data } = await axios.get(`http://localhost:1337/contacts`);
       setTableData(data);
     };
 
@@ -31,7 +25,7 @@ function App() {
   return (
     // <Parent />
     <Container maxWidth='md'>
-      <Form addDataToTable={addDataToTable} />
+      <Form />
       <BasicTable tableData={tableData} />
     </Container>
   );
