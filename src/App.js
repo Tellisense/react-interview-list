@@ -15,7 +15,7 @@ import BasicTable from "./components/Table";
 
 const useStyles = makeStyles(theme => ({
   button: {
-    margin: "0 5rem",
+    margin: "3rem 5rem",
   },
 }));
 
@@ -71,24 +71,26 @@ function App() {
   return (
     // <Parent />
     <Container maxWidth='md'>
+      <Grid container justify={"center"} item xs={12}>
+        <Button
+          fullWidth
+          className={classes.button}
+          size='large'
+          variant='contained'
+          color='primary'
+          onClick={handleSubmit}
+        >
+          Submit
+        </Button>
+      </Grid>
       <Card
         title='My Cool Table'
         headerComponent={
           <Form formData={formData} handleChange={handleChange} />
         }
       >
-        <Grid container justify={"center"} item xs={12}>
-          <Button
-            fullWidth
-            className={classes.button}
-            size='large'
-            variant='contained'
-            color='primary'
-            onClick={handleSubmit}
-          >
-            Submit
-          </Button>
-        </Grid>
+        <div>test</div>
+        <div style={{ fontSize: "20px" }}>this is my other child</div>
         <BasicTable tableData={tableData} />
       </Card>
     </Container>

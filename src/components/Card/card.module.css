@@ -1,7 +1,9 @@
 .container {
   margin-top: 5rem;
   width: 100%;
-  background-color: cornsilk;
+  border-radius: 10px;
+  background-color: lightgray;
+  box-shadow:  0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 
@@ -9,7 +11,10 @@
   width: 100%;
   display: flex;
   align-items: center;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   justify-content: space-around;
+  background-color:  coral;
 }
 
 

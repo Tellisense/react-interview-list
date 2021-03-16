@@ -1,8 +1,8 @@
 import React from 'react'
 import css from './card.module.css'
 
-const Card = (props) => {
-  const { title, headerComponent, children } = props
+const Card = ({ title, headerComponent, children }) => {
+
   return (
     <div className={css.container}>
       <div className={css.header}>
