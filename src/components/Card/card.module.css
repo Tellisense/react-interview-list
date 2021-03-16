@@ -1,0 +1,20 @@
+.container {
+  margin-top: 5rem;
+  width: 100%;
+  background-color: cornsilk;
+}
+
+
+.header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+
+.cardContent {
+  width: 100%;
+  overflow-y:auto;
+  overflow-x: hidden;
+}
