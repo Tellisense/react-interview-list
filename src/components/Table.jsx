@@ -14,6 +14,9 @@ const useStyles = makeStyles({
     marginTop: '4rem',
 
   },
+  tableContainer: {
+    overflow: 'auto'
+  }
 });
 
 
@@ -21,26 +24,30 @@ export default function BasicTable({ tableData: rows }) {
   const classes = useStyles();
 
   return (
-    <TableContainer component={Paper}>
+    <TableContainer className={classes.tableContainer} component={Paper}>
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>Name</TableCell>
-            <TableCell align="right">Email</TableCell>
-            <TableCell align="right">Website</TableCell>
-            <TableCell align="right">Company</TableCell>
+            <TableCell width="15%" align="left">Name</TableCell>
+            <TableCell width="15%" align="left">Username</TableCell>
+            <TableCell width="20%" align="left">Email</TableCell>
+            <TableCell width="20%" align="left">Website</TableCell>
+            <TableCell width="20%" align="left">Company</TableCell>
 
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows?.map((row) => (
+          {rows.length > 0 && rows.map((row) => (
             <TableRow key={row?.id}>
-              <TableCell component="th" scope="row">
+              <TableCell align="left">
                 {row?.name}
               </TableCell>
-              <TableCell align="right">{row.email}</TableCell>
-              <TableCell align="right">{row.website}</TableCell>
-              <TableCell align="right">{row?.company?.name}</TableCell>
+              <TableCell align="left" >
+                {row?.username}
+              </TableCell>
+              <TableCell align="left">{row?.email}</TableCell>
+              <TableCell align="left">{row?.website}</TableCell>
+              <TableCell align="left">{row?.company}</TableCell>
             </TableRow>
           ))}
         </TableBody>
